@@ -16,19 +16,31 @@ body {
 #gameCanvas {
     background-color: #004d00;  /* Fondo verde oscuro del canvas */
     border: 1px solid white;
-    position: relative; /* Asegura que el canvas no se vea afectado por el fondo */
+    position: relative;
 }
 
 /* Crear un fondo tipo ajedrez solo dentro del canvas */
-#gameCanvas {
-    position: relative;
-    z-index: 1;
+#gameCanvas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #b2d8b2, /* Verde claro */
+        #8fbc8f 30px, /* Verde oscuro */
+        #b2d8b2 30px,
+        #8fbc8f 60px
+    );
+    z-index: 0; /* Asegura que el fondo tipo ajedrez esté debajo del canvas */
 }
 
 .controls {
     margin-top: 10px;
     position: relative;
-    z-index: 2; /* Asegura que los botones estén por encima del canvas */
+    z-index: 1; /* Asegura que los botones estén por encima del canvas */
 }
 
 button {
@@ -36,6 +48,7 @@ button {
     padding: 10px 20px;
     font-size: 16px;
 }
+
 
 
 

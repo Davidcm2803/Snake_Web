@@ -1,9 +1,13 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-const scale = 30;  // Tamaño de cada celda
+// Tamaño de cada celda (duplicado)
+const scale = 30;  // Tamaño de cada celda, ahora más grande
 const rows = canvas.height / scale;
 const cols = canvas.width / scale;
+
+const lightGreen = '#b2d8b2';  // Verde claro
+const darkGreen = '#8fbc8f';   // Verde oscuro
 
 let snake = [{x: 0, y: 0}]; // La serpiente empieza en la esquina superior izquierda
 let food = {x: Math.floor(Math.random() * cols) * scale, y: Math.floor(Math.random() * rows) * scale};
@@ -17,10 +21,6 @@ let hasEaten = false;  // Indica si la serpiente ha comido al menos una manzana
 const appleImage = new Image();
 appleImage.src = 'apple.png';  // Ruta a la imagen de la manzana
 
-// Colores del fondo tipo ajedrez con tonos más suaves
-const lightGreen = '#b2d8b2';  // Verde claro y suave
-const darkGreen = '#8fbc8f';   // Verde más oscuro pero suave
-
 // Función para dibujar el fondo y la cuadrícula tipo ajedrez
 function drawBackground() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -29,9 +29,9 @@ function drawBackground() {
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             if ((i + j) % 2 === 0) {
-                ctx.fillStyle = darkGreen;
-            } else {
                 ctx.fillStyle = lightGreen;
+            } else {
+                ctx.fillStyle = darkGreen;
             }
             ctx.fillRect(j * scale, i * scale, scale, scale);
         }
@@ -139,7 +139,7 @@ function update() {
 function startGame() {
     if (!gameRunning) {
         gameRunning = true;
-        gameInterval = setInterval(update, 200); // Ajustar la velocidad
+        gameInterval = setInterval(update, 300); // Reducir la velocidad (aumentar el intervalo)
     }
 }
 
@@ -159,4 +159,7 @@ document.getElementById('resetBtn').addEventListener('click', resetGame);
 appleImage.onload = () => {
     drawGame();  // Dibuja el juego inicial
 };
+
+
+
 
