@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.game-container {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#gameCanvas {
+    background-color: #004d00;  /* Fondo verde oscuro del canvas */
+    border: 1px solid white;
+    position: relative; /* Asegura que el canvas no se vea afectado por el fondo */
+}
+
+/* Crear un fondo tipo ajedrez solo dentro del canvas */
+#gameCanvas {
+    position: relative;
+    z-index: 1;
+}
+
+.controls {
+    margin-top: 10px;
+    position: relative;
+    z-index: 2; /* Asegura que los botones estén por encima del canvas */
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+
+
